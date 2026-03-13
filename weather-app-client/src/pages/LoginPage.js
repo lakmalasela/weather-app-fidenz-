@@ -29,7 +29,7 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="login-card">
-        <h1 className="login-title">Login</h1>
+        <h1 className="login-title"> <i class="ri-temp-cold-fill"></i> Login</h1>
 
         <Formik
           initialValues={initialValues}
@@ -39,7 +39,7 @@ const LoginPage = () => {
           <Form>
 
             <div className="form-group">
-              <label>Email</label>
+              <label> <i class="ri-mail-line"></i> Email</label>
               <Field
                 name="email"
                 type="email"
@@ -50,7 +50,7 @@ const LoginPage = () => {
             </div>
 
             <div className="form-group">
-              <label>Password</label>
+              <label><i class="ri-lock-2-line"></i> Password</label>
               <Field
                 name="password"
                 type={showPassword ? "text" : "password"}
