@@ -3,43 +3,6 @@ import { Injectable } from "@nestjs/common";
 @Injectable()
 export class ComfortCalculationService {
     
-    // calculate(temp: number, humidity: number, windSpeed: number):number{
-
-    //     // Temperature score (ideal 22°C)
-    //     let tempScore = 100 - Math.abs(temp - 22)*4;
-    //     tempScore = Math.max(0,Math.min(100,tempScore));
-        
-    //     // Humidity score (ideal 50%)
-    //     let humidityScore = 100 - Math.abs(humidity - 50);
-    //     humidityScore = Math.max(0,Math.min(100,humidityScore));
-        
-    //     // Wind speed score (ideal calm: 0 m/s)
-    //     let windScore = 100 - windSpeed * 10;
-    //     windScore = Math.max(0, Math.min(100, windScore));
-
-    //     const comfortScore = 0.5 * tempScore + 0.3 * humidityScore + 0.2 * windScore;
-        
-    //     return Math.max(0, Math.min(100, comfortScore));
-    // }
-
-    // getComfortStatus(score: number): string {
-    //     if (score >= 90) return 'Very comfortable';
-    //     if (score >= 70) return 'Comfortable';
-    //     if (score >= 50) return 'Moderate';
-    //     if (score >= 30) return 'Uncomfortable';
-    //     return 'Very uncomfortable';
-    // }
-
-    // // Rank cities after all scores are calculated
-    // rankCities(cities: { cityName: string; comfortScore: number; [key: string]: any }[]) {
-    //     cities.sort((a, b) => b.comfortScore - a.comfortScore); // highest first
-
-    //     for (let i = 0; i < cities.length; i++) {
-    //         cities[i].rank = i + 1;
-    //     }
-
-    //     return cities;
-    // }
 
     calculate(temp: number, humidity: number, windSpeed: number): number {
 

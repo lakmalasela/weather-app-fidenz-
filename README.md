@@ -119,37 +119,42 @@ The **Weather Comfort Index** is a custom algorithm designed to translate raw me
 
 ### 1. The Ideal Baseline
 
-The algorithm assumes a "Perfect Day" based on standard human biometeorology:
+The algorithm uses **tiered comfort ranges** based on human biometeorology standards:
 
-* **Ideal Temperature:** 22°C ($71.6°F$)
-* **Ideal Humidity:** 50%
-* **Ideal Wind:** 0 m/s (Calm)
+* **Optimal Temperature Range:** 20°C - 25°C (68°F - 77°F)
+* **Optimal Humidity Range:** 40% - 60%
+* **Optimal Wind Range:** ≤ 3 m/s (Calm conditions)
 
 ### 2. Individual Component Scoring
 
-Each weather factor starts at 100 points and loses points as it deviates from the ideal.
+Each weather factor uses a **tiered scoring system** with discrete comfort levels rather than continuous penalties.
 
 #### **A. Temperature Score ($T_{score}$)**
 
-Temperature is the most sensitive variable. We use a **multiplier of 4** to create a steep penalty curve.
+Temperature comfort is evaluated using predefined ranges:
 
-* **Formula:** $100 - (|CurrentTemp - 22| \times 4)$
-* **Example:** At 30°C, the deviation is 8. Penalty = $8 \times 4 = 32$. Score = 68.
-* **Why 4?** Without this multiplier, a 10-degree difference would only drop the score by 10 points, which doesn't reflect how much hotter 32°C feels compared to 22°C.
+* **Perfect (100 points):** 20°C - 25°C (68°F - 77°F)
+* **Good (70 points):** 15°C - 30°C (59°F - 86°F)  
+* **Fair (40 points):** 10°C - 35°C (50°F - 95°F)
+* **Poor (10 points):** Below 10°C or above 35°C
 
 #### **B. Humidity Score ($H_{score}$)**
 
-High humidity prevents sweat evaporation, making it feel "stifling," while low humidity dries out skin and eyes.
+Humidity comfort follows a similar tiered approach:
 
-* **Formula:** $100 - |CurrentHumidity - 50|$
-* **Example:** At 80% humidity, the deviation is 30. Score = 70.
+* **Perfect (100 points):** 40% - 60%
+* **Good (70 points):** 30% - 70%
+* **Fair (40 points):** 20% - 80%
+* **Poor (10 points):** Below 20% or above 80%
 
 #### **C. Wind Speed Score ($W_{score}$)**
 
-Wind provides cooling but can be disruptive. This model treats "No Wind" as the highest comfort for relaxation.
+Wind comfort is based on speed thresholds:
 
-* **Formula:** $100 - (WindSpeed \times 10)$
-* **Example:** At 5 m/s, the penalty is 50. Score = 50.
+* **Perfect (100 points):** ≤ 3 m/s (Calm to light breeze)
+* **Good (70 points):** ≤ 7 m/s (Moderate breeze)
+* **Fair (40 points):** ≤ 12 m/s (Fresh breeze)
+* **Poor (10 points):** > 12 m/s (Strong wind)
 
 ---
 
@@ -172,10 +177,22 @@ $$Comfort = (T_{score} \times 0.5) + (H_{score} \times 0.3) + (W_{score} \times 
 
 ##  Implementation Details (Code Logic)
 
-The code uses **Clamping** (`Math.max` and `Math.min`) to ensure the data stays within logical bounds.
+The algorithm uses **range-based scoring** with discrete comfort levels:
 
-* **Min-Max Guard:** Prevents the score from dropping below 0 or exceeding 100, even if the weather is extremely harsh (e.g., 50°C heat).
-* **Absolute Math:** `Math.abs` is used because being 10 degrees *colder* than 22°C is just as uncomfortable as being 10 degrees *warmer*.
+* **Tiered Approach:** Each factor falls into one of four comfort tiers (100, 70, 40, 10 points)
+* **Weighted Average:** Final score combines tiered scores using weighted coefficients
+* **Status Mapping:** Comfort scores map to descriptive status levels
+* **Rounding:** Final scores are rounded to whole numbers for clarity
+
+### Comfort Status Levels
+
+The final comfort score maps to user-friendly status descriptions:
+
+* **85-100:** "Very Comfortable" - Ideal conditions across all factors
+* **65-84:** "Comfortable" - Generally pleasant with minor discomforts
+* **45-64:** "Moderate" - Mixed conditions, some discomfort factors
+* **25-44:** "Uncomfortable" - Significant discomfort elements
+* **0-24:** "Very Uncomfortable" - Extreme or harsh conditions
 
 ---
 
