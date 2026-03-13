@@ -1,0 +1,60 @@
+/* Responsive table styles for mobile */
+@media screen and (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table thead {
+    display: none;
+  }
+  
+  .table, .table tbody, .table tr, .table td {
+    display: block;
+    width: 100% !important;
+  }
+  
+  .table tr {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    padding: 0.75rem;
+    background-color: var(--card-bg);
+  }
+  
+  .table td {
+    text-align: right;
+    padding: 0.5rem 0;
+    border: none;
+    position: relative;
+    padding-left: 50%;
+  }
+  
+  .table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0.5rem;
+    width: 45%;
+    font-weight: 600;
+    text-align: left;
+    color: var(--text-secondary);
+  }
+  
+  .table td:last-child {
+    border-bottom: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .table td:before {
+    font-size: 0.875rem;
+  }
+  
+  .table td {
+    font-size: 0.875rem;
+    padding-left: 40%;
+  }
+  
+  .table td:before {
+    width: 35%;
+  }
+}
