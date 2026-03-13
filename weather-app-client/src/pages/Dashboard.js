@@ -33,7 +33,7 @@ const Dashboard = () => {
       const weatherData = await weatherInfoService.getWeatherInfo(city.CityCode);
       setDetailedWeather(weatherData);
       
-      // Also fetch rank data to ensure table has complete information
+      // Also fetch rank data to ensure table has complete data
       const rankDataResponse = await weatherInfoService.getWeatherInfoWithRank();
       setRankData(rankDataResponse);
     } catch (error) {

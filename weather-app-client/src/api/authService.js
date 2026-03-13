@@ -1,7 +1,8 @@
-// src/api/authService.js
 import axios from 'axios';
 
 export const authService = {
+
+  //login with email and password
   login: async (email, password) => {
     try {
       const res = await axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, {
@@ -25,6 +26,7 @@ export const authService = {
     }
   },
 
+  //request OTP
   requestOTP: async (email) => {
     try {
       const res = await axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/passwordless/start`, {
@@ -40,6 +42,7 @@ export const authService = {
     }
   },
 
+  //verify OTP
   verifyOTP: async (email, otp) => {
     try {
       const res = await axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, {
@@ -62,9 +65,11 @@ export const authService = {
     }
   },
 
+  //logout
   logout: () => {
     localStorage.removeItem('access_token');
   },
 
+  //get access token
   getAccessToken: () => localStorage.getItem('access_token'),
 };
