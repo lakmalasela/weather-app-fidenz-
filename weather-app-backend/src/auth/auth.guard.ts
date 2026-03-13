@@ -42,7 +42,11 @@ export class AuthGuard implements CanActivate {
       return true;
 
     } catch (error) {
-      console.error('JWT validation error:', error);
+      console.error('JWT validation error:', error.message);
+      response.status(401).json({ 
+        message: 'Unauthorized - Invalid or expired token',
+        error: error.message 
+      });
       return false;
     }
 

@@ -1,4 +1,3 @@
-// src/components/weatherInfoModal.js
 import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -17,23 +16,40 @@ const WeatherInfoModal = ({ show, handleClose, city, weatherData }) => {
     >
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
-          <div className="modal-header">
+          <div className="modal-header bg-color text-white">
             <h5 className="modal-title"><i className="ri-cloud-fill"></i> {weatherData.cityName || city.CityName} Weather Details</h5>
             <button type="button" className="btn-close" onClick={handleClose}></button>
           </div>
           <div className="modal-body">
-            <div className="row">
-              <div className="col-md-6">
-                <p><strong><i className="ri-temp-hot-line"></i> Temperature:</strong> {weatherData.temperature}°C</p>
-                <p><strong><i className="ri-cloud-line"></i> Description:</strong> {weatherData.description}</p>
-                <p><strong><i className="ri-drop-line"></i> Humidity:</strong> {weatherData.humidity}%</p>
-              </div>
-              <div className="col-md-6">
-                <p><strong><i className="ri-windy-line"></i> Wind Speed:</strong> {weatherData.windSpeed} m/s</p>
-                <p><strong><i className="ri-dashboard-2-line"></i> Comfort Score:</strong> {Number(weatherData.comfortScore).toFixed(2)}</p>
-                <p><strong><i className="ri-emotion-happy-line"></i> Comfort Status:</strong> {weatherData.comfortStatus || "N/A"}</p>
-                {/* <p><strong><i className="ri-sort-asc"></i> Rank:</strong> #{weatherData.rank}</p> */}
-              </div>
+              <div className="table-responsive">
+              <table className={`table table-bordered ${isDarkMode ? 'table-dark' : 'table-light'}`}>
+                <tbody>
+                  <tr>
+                    <th><i className="ri-temp-hot-line"></i> Temperature</th>
+                    <td>{weatherData.temperature}°C</td>
+                  </tr>
+                  <tr>
+                    <th><i className="ri-cloud-line"></i> Description</th>
+                    <td>{weatherData.description}</td>
+                  </tr>
+                  <tr>
+                    <th><i className="ri-drop-line"></i> Humidity</th>
+                    <td>{weatherData.humidity}%</td>
+                  </tr>
+                  <tr>
+                    <th><i className="ri-windy-line"></i> Wind Speed</th>
+                    <td>{weatherData.windSpeed} m/s</td>
+                  </tr>
+                  <tr>
+                    <th><i className="ri-dashboard-2-line"></i> Comfort Score</th>
+                    <td>{Number(weatherData.comfortScore).toFixed(2)}</td>
+                  </tr>
+                  <tr>
+                    <th><i className="ri-emotion-happy-line"></i> Comfort Status</th>
+                    <td>{weatherData.comfortStatus || 'N/A'}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div className="modal-footer">

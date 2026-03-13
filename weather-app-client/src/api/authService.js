@@ -49,6 +49,7 @@ export const authService = {
         username: email,
         client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
         scope: 'openid profile email',
+        audience: process.env.REACT_APP_AUTH0_AUDIENCE,
       });
       const data = res.data;
       

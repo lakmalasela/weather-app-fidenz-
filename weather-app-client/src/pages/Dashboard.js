@@ -78,12 +78,16 @@ const Dashboard = () => {
     <Table tableData={rankData}/>
 </div>
     </div>
-    <WeatherInfoModal 
+    <div className="mb-4">
+  <WeatherInfoModal 
       show={showModal} 
       handleClose={handleCloseModal} 
       city={selectedCity}
       weatherData={detailedWeather}
     />
+
+    </div>
+  
    </div>
   );
 };

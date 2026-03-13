@@ -9,7 +9,7 @@ export class WeatherInfoController {
 
     @Get()
     @UseGuards(AuthGuard)
-    asyncgetWeather(@Query('cityId') cityId: string): Promise<WeatherResponseDto> {
+    async getWeather(@Query('cityId') cityId: string): Promise<WeatherResponseDto> {
         return this.weatherInfoService.getWeather(cityId);
     }
 
@@ -22,6 +22,7 @@ export class WeatherInfoController {
 
       // All cities with rank
     @Get('rank')
+    @UseGuards(AuthGuard)
     async getCitiesRank() {
 
         return this.weatherInfoService.getCitiesWeatherWithRank();
