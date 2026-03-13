@@ -64,7 +64,7 @@ const OTPPage = () => {
                     >
                         <Form>
                             <div className="form-group">
-                                <label>Email</label>
+                                <label><i class="ri-mail-line"></i> Email</label>
                                 <Field
                                     name="email"
                                     type="email"
