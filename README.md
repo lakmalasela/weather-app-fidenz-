@@ -309,3 +309,11 @@ The application features a **comprehensive dark mode implementation** with seaml
 - **Minimal Repaints:** Efficient DOM updates during theme switches
 
 ---
+<img width="1872" height="899" alt="login" src="https://github.com/user-attachments/assets/c1a96dc9-0be6-4dc5-bf89-45e4d0a1c426" />
+<img width="1203" height="823" alt="login with otp" src="https://github.com/user-attachments/assets/1f9f95d8-f3b8-409e-9f0c-cc4f98e7837b" />
+<img width="919" height="745" alt="verify otp" src="https://github.com/user-attachments/assets/29bce3d8-76a5-474a-a6de-00fc4e2790e8" />
+
+<img width="1162" height="526" alt="recived otp" src="https://github.com/user-attachments/assets/a0f7f67b-c682-4295-b289-c1cf5e209828" />
+<img width="1919" height="883" alt="table" src="https://github.com/user-attachments/assets/7d28fff2-3a1a-43d2-aba4-1bd7d1a96e05" />
+<img width="1382" height="837" alt="modal" src="https://github.com/user-attachments/assets/1ab3303b-a3d1-4adc-a76e-94856371e193" />
+<img width="1903" height="818" alt="dark mood" src="https://github.com/user-attachments/assets/f3d93965-680e-42a4-b9a7-bb0e16fda227" />
