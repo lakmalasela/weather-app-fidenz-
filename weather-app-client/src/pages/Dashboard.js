@@ -36,7 +36,6 @@ const Dashboard = () => {
       // Also fetch rank data to ensure table has complete information
       const rankDataResponse = await weatherInfoService.getWeatherInfoWithRank();
       setRankData(rankDataResponse);
-      console.log('Rank data:', rankDataResponse);
     } catch (error) {
       console.error('Failed to fetch detailed weather:', error);
     }
